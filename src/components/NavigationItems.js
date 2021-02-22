@@ -49,10 +49,10 @@ export default function NavigationItems(){
                     </Grid>
                     <Grid item className={classes.m1}>
                         <Typography >
-                            User Name
+                            {localStorage.getItem("username")}
                         </Typography>
                         <Typography>
-                            useremail@mail.com
+                            unemail@mail.com
                         </Typography>
                     </Grid>
                     <Grid container justify={"flex-end"}>
