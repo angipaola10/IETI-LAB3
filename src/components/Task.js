@@ -21,12 +21,12 @@ export default function Task({description, status, dueDate, responsible}) {
                     <Grid item xs={1}>
                         <AssignmentIcon />
                     </Grid>
-                    <Grid item xs={10}>
+                    <Grid item xs={9}>
                         <Typography color="secondary">
                             {status}
                         </Typography>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={3}>
                         <Typography color="secondary">
                             {dueDate.toLocaleDateString()}
                         </Typography>
