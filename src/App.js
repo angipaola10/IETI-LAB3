@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useEffect} from 'react';
+import MainView from './components/MainView';
+import Login from './components/Login';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 
 function App() {
+
+  useEffect(function () {
+    let currentPath = window.location.pathname;
+    let nextPath = validate(currentPath)
+    if (currentPath !== nextPath) {
+      window.location.href = nextPath;
+    }
+  }, []);
+
+  const validate = () => {
+    if (localStorage.getItem("loggingStaus") === "logged") return "/mainView";
+    return "/";
+  }
+
+  const loginView = () => (
+    <Login />
+  );
+
+  const mainView = () => (
+    <MainView />
+  );
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+          <Route exact path="/" component={loginView} />
+          <Route path="/mainView" component={mainView} />
+    </Router>
   );
 }
 
